@@ -2,17 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <!-- Viewport optimisé pour mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Offre Mini App Telegram</title>
+    <title>Offre Mini App Telegram - Basique & Premium</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
-
     <!-- Police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icônes Phosphor -->
@@ -24,43 +18,36 @@
             background-color: #f8fafc;
             background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
             background-size: 24px 24px;
-            transition: background-color 0.5s ease, background-image 0.5s ease;
             overscroll-behavior-y: none;
+            transition: background-color 0.5s ease;
         }
 
-        .dark body {
-            background-color: #0f172a;
-            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+        /* Classes utilitaires pour les transitions de thème */
+        .theme-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .bento-card {
             background: white;
             border: 1px solid rgba(226, 232, 240, 0.8);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-        }
-
-        .dark .bento-card {
-            background: #1e293b;
-            border-color: rgba(51, 65, 85, 0.5);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
         
         @media (hover: hover) {
             .bento-card:hover {
-                box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
-                transform: translateY(-4px);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
             }
         }
 
-        /* --- STYLES TÉLÉPHONE OPTIMISÉS MOBILE --- */
+        /* --- STYLE DU TÉLÉPHONE --- */
         .phone-mockup {
             border: 10px solid #1a1a1a;
-            border-radius: 30px;
+            border-radius: 35px;
             overflow: hidden;
             position: relative;
             background: #000;
-            box-shadow: 0 0 0 1px #333, 0 15px 40px -10px rgba(0,0,0,0.5);
+            box-shadow: 0 0 0 1px #333, 0 15px 40px -10px rgba(0,0,0,0.4);
             width: 100%;
             max-width: 260px;
             aspect-ratio: 9/19.5;
@@ -68,281 +55,471 @@
             margin: auto;
             transform: rotate(-2deg);
             transition: transform 0.5s ease;
-        }
-
-        @media (max-width: 400px) {
-            .phone-mockup {
-                border-width: 8px;
-                border-radius: 24px;
-            }
+            z-index: 20;
         }
 
         .phone-notch {
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40%;
-            height: 4%;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 35%; height: 25px;
             background: #1a1a1a;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            z-index: 20;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: #000;
-            position: relative;
-            overflow: hidden;
+            border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;
+            z-index: 30;
         }
 
         .phone-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
         }
-        
+
         .tech-bg {
-            position: absolute;
-            inset: 0;
-            opacity: 0.05;
-            background-image: linear-gradient(0deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent);
+            position: absolute; inset: 0; opacity: 0.05;
             background-size: 50px 50px;
             z-index: 0;
+            transition: background-image 0.5s ease;
         }
 
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 50;
-            padding: 12px;
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border: 1px solid #e2e8f0;
+        /* Checkbox animée */
+        .check-anim { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        /* Toggle Switch Styles */
+        .mode-switch-container {
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: 9999px;
+            display: inline-flex;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .mode-btn {
+            position: relative;
+            z-index: 10;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: color 0.3s ease;
+            user-select: none;
         }
-        .dark .theme-toggle {
-            background: #1e293b;
-            border-color: #334155;
-            color: white;
+        .mode-indicator {
+            position: absolute;
+            top: 4px; bottom: 4px;
+            border-radius: 9999px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
         }
 
-        /* Animation de la checkbox */
-        .check-anim {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4 md:p-8 pb-32">
+<body class="flex flex-col items-center justify-start min-h-screen p-4 md:p-8 pb-32">
 
-    <!-- Container GRID aplati pour permettre le réagencement -->
+    <!-- SÉLECTEUR DE MODE (BASIQUE vs PREMIUM) -->
+    <div class="mb-8 sticky top-2 z-50">
+        <div class="mode-switch-container bg-slate-200">
+            <!-- L'indicateur glissant -->
+            <div id="mode-indicator" class="mode-indicator w-[100px] left-1 bg-white"></div>
+            
+            <div onclick="setMode('basic')" class="mode-btn text-slate-800 w-[100px] text-center" id="btn-basic">
+                Basique
+            </div>
+            <div onclick="setMode('premium')" class="mode-btn text-slate-500 w-[100px] text-center" id="btn-premium">
+                Premium
+            </div>
+        </div>
+    </div>
+
     <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
-
+        
         <!-- 
-           ORDRE MOBILE DÉSIRÉ :
+           ORDRE MOBILE :
            1. Titre & Features
            2. Vidéo (Téléphone)
            3. Option Sérénité
            4. Prix & CTA
         -->
 
-        <!-- 1. BLOC FEATURES (Mobile: Order 1 | Desktop: Droite, Order 2) -->
-        <div class="bento-card col-span-1 lg:col-span-7 order-1 lg:order-2 rounded-3xl p-6 lg:p-10 flex flex-col justify-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-40 h-40 bg-blue-50 dark:bg-blue-900/30 rounded-full blur-2xl opacity-60 transition-colors duration-500"></div>
+        <!-- 1. BLOC FEATURES & TITRE -->
+        <div class="bento-card theme-transition col-span-1 lg:col-span-7 order-1 lg:order-2 rounded-3xl p-6 lg:p-10 flex flex-col justify-center h-full relative overflow-hidden">
+            <!-- Blobs d'arrière-plan (changent de couleur) -->
+            <div id="blob-top" class="theme-transition absolute top-0 right-0 w-40 h-40 bg-blue-50 rounded-full blur-2xl opacity-60"></div>
             
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-xs font-bold tracking-wide w-max mb-4 uppercase transition-colors duration-300">Nouvelle Tendance</span>
+            <!-- TAG (Change de style) -->
+            <span id="offer-tag" class="theme-transition inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-wide w-max mb-4 uppercase border border-transparent">
+                Nouvelle Tendance
+            </span>
             
-            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight transition-colors duration-300">
-                Mini App E-commerce <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">pour Telegram</span>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
+                Mini App Telegram <br>
+                <!-- Gradient du titre (Change) -->
+                <span id="title-gradient" class="theme-transition text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                    E-commerce Simple
+                </span>
             </h1>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0"><i class="ph-bold ph-check"></i></div>
-                    <span class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-medium">Personnalisation illimitée</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0"><i class="ph-bold ph-check"></i></div>
-                    <span class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-medium">Produits illimités</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0"><i class="ph-bold ph-check"></i></div>
-                    <span class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-medium">Tous vos réseaux</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0"><i class="ph-bold ph-check"></i></div>
-                    <span class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-medium">Commande WhatsApp/TG</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0"><i class="ph-bold ph-check"></i></div>
-                    <span class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-medium">Fond animé Logo</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0"><i class="ph-bold ph-check"></i></div>
-                    <span class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-medium">Panel Admin complet</span>
-                </div>
+            <!-- Liste des Features (Injectée via JS) -->
+            <div id="features-list" class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
+                <!-- Rempli par JS -->
             </div>
         </div>
 
-        <!-- 2. BLOC TÉLÉPHONE/VIDÉO (Mobile: Order 2 | Desktop: Gauche, Order 1, prend toute la hauteur) -->
-        <div class="bento-card col-span-1 lg:col-span-5 lg:row-span-3 order-2 lg:order-1 rounded-3xl p-6 lg:p-8 relative overflow-hidden flex items-center justify-center h-full min-h-[400px] lg:min-h-auto">
-            <div class="tech-bg"></div>
-            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100 dark:bg-blue-900 rounded-full blur-3xl opacity-50 -mr-16 -mt-16 transition-colors duration-500"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-indigo-100 dark:bg-indigo-900 rounded-full blur-3xl opacity-50 -ml-16 -mb-16 transition-colors duration-500"></div>
+        <!-- 2. BLOC TÉLÉPHONE/VIDÉO -->
+        <div id="phone-container" class="bento-card theme-transition col-span-1 lg:col-span-5 lg:row-span-3 order-2 lg:order-1 rounded-3xl p-6 lg:p-8 relative overflow-hidden flex items-center justify-center h-full min-h-[400px] lg:min-h-auto bg-white">
+            <div id="tech-bg" class="tech-bg" style="background-image: linear-gradient(0deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent);"></div>
+            
+            <!-- Blobs téléphone -->
+            <div id="blob-phone-1" class="theme-transition absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50 -mr-16 -mt-16"></div>
+            <div id="blob-phone-2" class="theme-transition absolute bottom-0 left-0 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-50 -ml-16 -mb-16"></div>
 
             <div class="phone-mockup z-10 relative">
                 <div class="phone-notch"></div>
                 <div class="phone-screen">
-                    <!-- VIDEO PLAYER -->
                     <video class="phone-video" autoplay loop muted playsinline poster="https://via.placeholder.com/280x560/000000/FFFFFF?text=Chargement...">
                         <source src="https://raw.githubusercontent.com/pluggedtmap/presentation-mini-app-basique/main/video5969790046478276182.mp4" type="video/mp4">
                         <source src="./demo.mp4" type="video/mp4">
-                        <div class="flex items-center justify-center h-full w-full text-white text-center p-4">
-                            <p class="text-xs">Vidéo introuvable.</p>
-                        </div>
                     </video>
                 </div>
             </div>
         </div>
 
-        <!-- 3. BLOC SÉRÉNITÉ (Mobile: Order 3 | Desktop: Droite, Order 3) -->
-        <div id="serenite-option" onclick="toggleSerenite()" class="bento-card col-span-1 lg:col-span-7 order-3 lg:order-3 cursor-pointer relative rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-slate-800 dark:to-slate-800 border border-amber-100 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 transition-all duration-300 select-none group">
+        <!-- 3. BLOC SÉRÉNITÉ (Interactif) -->
+        <div id="serenite-option" onclick="toggleSerenite()" class="bento-card theme-transition col-span-1 lg:col-span-7 order-3 lg:order-3 relative rounded-2xl p-5 border-2 cursor-pointer flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left group select-none transition-all duration-300">
             
-            <div id="serenite-check" class="check-anim absolute top-3 right-3 sm:top-5 sm:right-5 w-6 h-6 rounded-full border-2 border-orange-300 dark:border-slate-500 flex items-center justify-center text-white bg-white dark:bg-transparent">
+            <!-- Checkbox -->
+            <div id="serenite-check" class="check-anim absolute top-3 right-3 sm:top-5 sm:right-5 w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-white">
                 <i class="ph-bold ph-check text-sm opacity-0 check-anim"></i>
             </div>
 
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center text-orange-500 text-xl sm:text-2xl shrink-0 shadow-sm">
-                <i class="ph-fill ph-star"></i>
+            <!-- Icône Shield -->
+            <div id="serenite-icon-bg" class="theme-transition w-12 h-12 rounded-full flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                <i class="ph-fill ph-shield-check"></i>
             </div>
-            <div class="text-center sm:text-left pr-6 sm:pr-0">
-                <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base sm:text-lg">Option Sérénité</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">Cliquer pour ajouter : Hébergement inclus (+50€/mois)</p>
+            
+            <div class="pr-6 sm:pr-0">
+                <h3 id="serenite-title" class="theme-transition font-bold text-lg">Option Sérénité</h3>
+                <p id="serenite-desc" class="theme-transition text-sm">Cliquer pour ajouter : Hébergement inclus + Maintenance (+50€/mois)</p>
             </div>
         </div>
 
-        <!-- 4. BLOC PRIX & CTA (Mobile: Order 4 | Desktop: Droite, Order 4) -->
-        <div class="bento-card col-span-1 lg:col-span-7 order-4 lg:order-4 rounded-3xl p-6 lg:p-8 bg-slate-900 dark:bg-blue-950 text-white flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden transition-colors duration-300">
-            <div class="absolute right-0 bottom-0 w-64 h-64 bg-blue-600 rounded-full blur-3xl opacity-20 translate-x-1/2 translate-y-1/2"></div>
+        <!-- 4. BLOC PRIX & CTA -->
+        <div id="price-card" class="bento-card theme-transition col-span-1 lg:col-span-7 order-4 lg:order-4 rounded-3xl p-6 lg:p-8 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden border-2">
+            <!-- Blob de fond Prix -->
+            <div id="blob-price" class="theme-transition absolute right-0 bottom-0 w-64 h-64 rounded-full blur-3xl opacity-20 translate-x-1/2 translate-y-1/2"></div>
 
             <div class="text-center md:text-left z-10 w-full md:w-auto">
-                <p class="text-slate-400 text-xs sm:text-sm font-medium mb-1 uppercase tracking-wider">Investissement unique</p>
+                <p id="price-label" class="theme-transition text-xs font-medium mb-1 uppercase tracking-wider">Investissement unique</p>
                 <div class="flex items-baseline justify-center md:justify-start gap-1">
-                    <span class="text-4xl sm:text-5xl font-extrabold text-white">350€</span>
-                    <span class="text-slate-400 font-medium text-sm sm:text-base">/création</span>
+                    <span id="price-value" class="theme-transition text-4xl sm:text-5xl font-extrabold">350€</span>
+                    <span id="price-suffix" class="font-medium text-sm sm:text-base">/création</span>
                 </div>
-                <div id="monthly-price-container" class="mt-2 text-xs sm:text-sm text-slate-300 bg-slate-800/50 py-1 px-3 rounded-lg inline-block transition-colors duration-300">
+                <div id="monthly-price-container" class="theme-transition mt-2 text-xs sm:text-sm py-1 px-3 rounded-lg inline-block transition-colors duration-300">
                     Hébergement : <strong>15€/mois</strong>
                 </div>
             </div>
 
-            <!-- Bouton CTA : Visibilité forcée, z-index élevé, bordure légère pour contraste -->
-            <a id="cta-button" href="https://t.me/dailyhash?text=Bonjour%2C%20je%20souhaite%20commander%20une%20Mini%20App%20Basique" target="_blank" rel="noopener noreferrer" class="relative z-20 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-bold py-4 px-6 sm:px-8 rounded-xl transition-all shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2 w-full md:w-auto group touch-manipulation no-underline border border-white/10">
-                Commander
-                <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            <!-- Bouton CTA -->
+            <a id="cta-button" href="#" target="_blank" rel="noopener noreferrer" class="theme-transition relative z-20 font-bold py-4 px-6 sm:px-8 rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 w-full md:w-auto group touch-manipulation no-underline text-sm sm:text-base whitespace-nowrap border border-white/10">
+                <span id="cta-icon"></span>
+                <span id="cta-text">Commander</span>
+                <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform shrink-0"></i>
             </a>
         </div>
 
     </div>
 
-    <!-- Bouton Toggle Thème -->
-    <button onclick="toggleTheme()" class="theme-toggle" aria-label="Changer de thème">
-        <i class="ph-fill ph-moon-stars text-xl" id="theme-icon"></i>
-    </button>
-
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // --- LOGIQUE SÉRÉNITÉ ---
+        // --- DATA & CONFIG ---
+        const config = {
+            basic: {
+                colors: {
+                    primary: 'blue',
+                    gradientFrom: 'from-blue-600',
+                    gradientTo: 'to-indigo-600',
+                    bgLight: 'bg-blue-50',
+                    bgIcon: 'bg-blue-100',
+                    textIcon: 'text-blue-700',
+                    blob1: 'bg-blue-100',
+                    blob2: 'bg-indigo-100',
+                    blobPrice: 'bg-blue-600',
+                    ctaBg: 'bg-blue-600',
+                    ctaHover: 'hover:bg-blue-500',
+                    // ctaText était ici par erreur, je l'ai déplacé plus bas
+                    priceCardBg: 'bg-slate-900',
+                    priceCardBorder: 'border-slate-900',
+                    priceText: 'text-white',
+                    subText: 'text-slate-400',
+                    tagBg: 'bg-blue-100',
+                    tagText: 'text-blue-700',
+                    tagBorder: 'border-transparent',
+                    sereniteBg: 'bg-gradient-to-r from-amber-50 to-orange-50',
+                    sereniteBorder: 'border-amber-100',
+                    sereniteTextTitle: 'text-slate-800',
+                    sereniteTextDesc: 'text-slate-600',
+                    sereniteIconBg: 'bg-orange-100',
+                    sereniteIconColor: 'text-orange-500',
+                },
+                content: {
+                    title: 'Mini App E-commerce <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">pour Telegram</span>',
+                    tag: 'Nouvelle Tendance',
+                    price: '350€',
+                    ctaText: 'Commander Basique', // ✅ CORRIGÉ : Ajouté ici
+                    features: [
+                        {icon: 'ph-check', text: 'Personnalisation illimitée', color: 'green'},
+                        {icon: 'ph-check', text: 'Produits & catégories illimités', color: 'green'},
+                        {icon: 'ph-check', text: 'Liens vers tous vos réseaux', color: 'green'},
+                        {icon: 'ph-check', text: 'Commande Telegram/WhatsApp', color: 'green'},
+                        {icon: 'ph-check', text: 'Fond animé (Couleurs Logo)', color: 'green'},
+                        {icon: 'ph-check', text: 'Panel Admin complet', color: 'green'},
+                    ]
+                }
+            },
+            premium: {
+                colors: {
+                    primary: 'amber',
+                    gradientFrom: 'from-amber-600',
+                    gradientTo: 'to-orange-600',
+                    bgLight: 'bg-amber-50',
+                    bgIcon: 'bg-amber-100',
+                    textIcon: 'text-amber-700',
+                    blob1: 'bg-amber-100',
+                    blob2: 'bg-orange-100',
+                    blobPrice: 'bg-amber-400',
+                    ctaBg: 'bg-slate-900',
+                    ctaHover: 'hover:bg-slate-800',
+                    // ctaText était ici par erreur
+                    priceCardBg: 'bg-white',
+                    priceCardBorder: 'border-amber-500/20',
+                    priceText: 'text-slate-900',
+                    subText: 'text-slate-500',
+                    tagBg: 'bg-slate-900',
+                    tagText: 'text-amber-400',
+                    tagBorder: 'border-amber-500/30',
+                    sereniteBg: 'bg-slate-900',
+                    sereniteBorder: 'border-slate-800',
+                    sereniteTextTitle: 'text-white',
+                    sereniteTextDesc: 'text-slate-400',
+                    sereniteIconBg: 'bg-amber-500/20',
+                    sereniteIconColor: 'text-amber-400',
+                },
+                content: {
+                    title: 'Mini App Telegram <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">Premium & Fluide</span>',
+                    tag: '<i class="ph-fill ph-crown mr-1"></i> Version Premium',
+                    price: '500€',
+                    ctaText: 'Commander Premium', // ✅ CORRIGÉ : Ajouté ici
+                    features: [
+                        {icon: 'ph-star', text: 'Interface Premium style iOS', color: 'amber'},
+                        {icon: 'ph-paint-brush', text: 'Choix bannière animée', color: 'amber'},
+                        {icon: 'ph-check', text: 'Personnalisation illimitée', color: 'green'},
+                        {icon: 'ph-check', text: 'Produits & catégories illimités', color: 'green'},
+                        {icon: 'ph-check', text: 'Commande Telegram/WhatsApp', color: 'green'},
+                        {icon: 'ph-check', text: 'Panel Admin complet', color: 'green'},
+                    ]
+                }
+            }
+        };
+
+        let currentMode = 'basic';
         let isSereniteSelected = false;
+
+        // --- DOM ELEMENTS ---
+        const els = {
+            indicator: document.getElementById('mode-indicator'),
+            btnBasic: document.getElementById('btn-basic'),
+            btnPremium: document.getElementById('btn-premium'),
+            
+            title: document.querySelector('h1'),
+            tag: document.getElementById('offer-tag'),
+            featuresList: document.getElementById('features-list'),
+            
+            priceValue: document.getElementById('price-value'),
+            priceCard: document.getElementById('price-card'),
+            priceLabel: document.getElementById('price-label'),
+            priceSuffix: document.getElementById('price-suffix'),
+            monthlyContainer: document.getElementById('monthly-price-container'),
+            
+            ctaBtn: document.getElementById('cta-button'),
+            ctaText: document.getElementById('cta-text'),
+            ctaIcon: document.getElementById('cta-icon'),
+
+            sereniteBlock: document.getElementById('serenite-option'),
+            sereniteCheck: document.getElementById('serenite-check'),
+            sereniteIconBg: document.getElementById('serenite-icon-bg'),
+            sereniteIcon: document.querySelector('#serenite-icon-bg i'),
+            sereniteTitle: document.getElementById('serenite-title'),
+            sereniteDesc: document.getElementById('serenite-desc'),
+
+            blobs: [
+                document.getElementById('blob-top'),
+                document.getElementById('blob-phone-1'),
+                document.getElementById('blob-phone-2'),
+                document.getElementById('blob-price')
+            ],
+            techBg: document.getElementById('tech-bg'),
+        };
+
+        // --- FUNCTIONS ---
+
+        function setMode(mode) {
+            currentMode = mode;
+            const data = config[mode];
+            const colors = data.colors;
+            const content = data.content;
+
+            // 1. Toggle Switch Animation
+            if (mode === 'basic') {
+                els.indicator.style.left = '4px';
+                els.btnBasic.classList.replace('text-slate-500', 'text-slate-800');
+                els.btnPremium.classList.replace('text-slate-800', 'text-slate-500');
+            } else {
+                els.indicator.style.left = 'calc(100% - 104px)';
+                els.btnBasic.classList.replace('text-slate-800', 'text-slate-500');
+                els.btnPremium.classList.replace('text-slate-500', 'text-slate-800');
+            }
+
+            // 2. Content Updates
+            els.title.innerHTML = content.title;
+            els.tag.innerHTML = content.tag;
+            els.priceValue.innerText = content.price;
+            els.ctaText.innerText = content.ctaText;
+
+            // 3. Features Render
+            els.featuresList.innerHTML = content.features.map(f => `
+                <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 rounded-full bg-${f.color === 'amber' ? 'amber-100' : 'green-100'} flex items-center justify-center text-${f.color === 'amber' ? 'amber-700' : 'green-600'} shrink-0">
+                        <i class="ph-bold ${f.icon}"></i>
+                    </div>
+                    <span class="text-slate-800 font-medium text-sm sm:text-base">${f.text}</span>
+                </div>
+            `).join('');
+
+            // 4. Styles Update (Classes)
+            // Reset common styles first is hard, better to replace specific classes
+            
+            // Tag Styles
+            els.tag.className = `theme-transition inline-block py-1 px-3 rounded-full text-xs font-bold tracking-wide w-max mb-4 uppercase border ${colors.tagBg} ${colors.tagText} ${colors.tagBorder}`;
+            
+            // Background Blobs
+            els.blobs[0].className = `theme-transition absolute top-0 right-0 w-40 h-40 rounded-full blur-2xl opacity-60 ${colors.bgLight}`;
+            els.blobs[1].className = `theme-transition absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-50 -mr-16 -mt-16 ${colors.blob1}`;
+            els.blobs[2].className = `theme-transition absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl opacity-50 -ml-16 -mb-16 ${colors.blob2}`;
+            els.blobs[3].className = `theme-transition absolute right-0 bottom-0 w-64 h-64 rounded-full blur-3xl opacity-20 translate-x-1/2 translate-y-1/2 ${colors.blobPrice}`;
+
+            // Tech BG Tint
+            const tintColor = mode === 'basic' ? '#3b82f6' : '#f59e0b';
+            els.techBg.style.backgroundImage = `linear-gradient(0deg, transparent 24%, ${tintColor} 25%, ${tintColor} 26%, transparent 27%, transparent 74%, ${tintColor} 75%, ${tintColor} 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, ${tintColor} 25%, ${tintColor} 26%, transparent 27%, transparent 74%, ${tintColor} 75%, ${tintColor} 76%, transparent 77%, transparent)`;
+
+            // CTA Button Base Style
+            els.ctaBtn.className = `theme-transition relative z-20 font-bold py-4 px-6 sm:px-8 rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 w-full md:w-auto group touch-manipulation no-underline text-sm sm:text-base whitespace-nowrap border border-white/10 ${colors.ctaBg} text-white ${colors.ctaHover}`;
+            
+            // CTA Icon
+            if (mode === 'premium') {
+                els.ctaIcon.innerHTML = '<i class="ph-fill ph-crown text-amber-400"></i>';
+            } else {
+                els.ctaIcon.innerHTML = '';
+            }
+
+            // Price Card Style
+            els.priceCard.className = `bento-card theme-transition col-span-1 lg:col-span-7 order-4 lg:order-4 rounded-3xl p-6 lg:p-8 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden border-2 ${colors.priceCardBg} ${colors.priceCardBorder}`;
+            
+            // Text Colors in Price Card
+            els.priceValue.className = `theme-transition text-4xl sm:text-5xl font-extrabold ${colors.priceText}`;
+            els.priceLabel.className = `theme-transition text-xs font-medium mb-1 uppercase tracking-wider ${colors.subText}`;
+            els.priceSuffix.className = `font-medium text-sm sm:text-base ${colors.subText}`;
+
+            // Reset Serenite Visuals based on mode (if not selected, or even if selected, base styles change)
+            updateSereniteVisuals();
+            updatePricingAndLink();
+        }
 
         function toggleSerenite() {
             isSereniteSelected = !isSereniteSelected;
+            updateSereniteVisuals();
+            updatePricingAndLink();
+        }
 
-            // Éléments
-            const optionBlock = document.getElementById('serenite-option');
-            const checkCircle = document.getElementById('serenite-check');
-            const checkIcon = checkCircle.querySelector('i');
-            const monthlyPriceContainer = document.getElementById('monthly-price-container');
-            const ctaButton = document.getElementById('cta-button');
-
+        function updateSereniteVisuals() {
+            const data = config[currentMode].colors;
+            
+            // Styles de base du bloc Sérénité (selon Basic ou Premium)
+            let blockClasses = `bento-card theme-transition col-span-1 lg:col-span-7 order-3 lg:order-3 relative rounded-2xl p-5 border-2 cursor-pointer flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left group select-none transition-all duration-300 `;
+            
+            // Styles de l'icône et texte
+            els.sereniteIconBg.className = `theme-transition w-12 h-12 rounded-full flex items-center justify-center text-2xl shrink-0 shadow-inner ${data.sereniteIconBg} ${data.sereniteIconColor}`;
+            
             if (isSereniteSelected) {
-                // ACTIVÉ
-                optionBlock.classList.remove('border-amber-100', 'dark:border-slate-700');
-                optionBlock.classList.add('border-orange-500', 'ring-1', 'ring-orange-500', 'bg-orange-50', 'dark:bg-slate-700');
+                // ETAT ACTIF
+                // Bordure orange ou dorée selon le mode, fond plus soutenu
+                const activeBorder = currentMode === 'basic' ? 'border-orange-500 bg-orange-50' : 'border-amber-500 bg-slate-800';
+                els.sereniteBlock.className = blockClasses + activeBorder;
                 
-                checkCircle.classList.remove('bg-white', 'dark:bg-transparent', 'border-orange-300', 'dark:border-slate-500');
-                checkCircle.classList.add('bg-orange-500', 'border-orange-500');
-                checkIcon.classList.remove('opacity-0');
+                // Checkbox active
+                els.sereniteCheck.className = `check-anim absolute top-3 right-3 sm:top-5 sm:right-5 w-6 h-6 rounded-full border-2 flex items-center justify-center text-white bg-orange-500 border-orange-500`;
+                els.sereniteCheck.querySelector('i').classList.remove('opacity-0');
 
-                monthlyPriceContainer.innerHTML = 'Option Sérénité : <strong class="text-orange-400">50€/mois</strong> (Hébergement inclus)';
-                monthlyPriceContainer.classList.remove('text-slate-300', 'bg-slate-800/50');
-                monthlyPriceContainer.classList.add('text-orange-100', 'bg-orange-900/50');
-
-                ctaButton.href = "https://t.me/dailyhash?text=Bonjour%2C%20je%20souhaite%20commander%20une%20Mini%20App%20Basique%20AVEC%20Option%20Sérénité";
+                // Texte actif
+                 if(currentMode === 'premium') {
+                    els.sereniteTitle.className = "theme-transition font-bold text-lg text-white";
+                    els.sereniteDesc.className = "theme-transition text-sm text-slate-300";
+                 } else {
+                    els.sereniteTitle.className = "theme-transition font-bold text-lg text-slate-900";
+                    els.sereniteDesc.className = "theme-transition text-sm text-slate-700";
+                 }
 
             } else {
-                // DÉSACTIVÉ
-                optionBlock.classList.add('border-amber-100', 'dark:border-slate-700');
-                optionBlock.classList.remove('border-orange-500', 'ring-1', 'ring-orange-500', 'bg-orange-50', 'dark:bg-slate-700');
+                // ETAT INACTIF
+                // Retour aux styles de base définis dans la config
+                els.sereniteBlock.className = blockClasses + `${data.sereniteBg} ${data.sereniteBorder} hover:border-slate-400`;
                 
-                checkCircle.classList.add('bg-white', 'dark:bg-transparent', 'border-orange-300', 'dark:border-slate-500');
-                checkCircle.classList.remove('bg-orange-500', 'border-orange-500');
-                checkIcon.classList.add('opacity-0');
+                // Checkbox inactive
+                const checkBorder = currentMode === 'basic' ? 'border-slate-300' : 'border-slate-600';
+                els.sereniteCheck.className = `check-anim absolute top-3 right-3 sm:top-5 sm:right-5 w-6 h-6 rounded-full border-2 flex items-center justify-center text-transparent bg-transparent ${checkBorder}`;
+                els.sereniteCheck.querySelector('i').classList.add('opacity-0');
 
-                monthlyPriceContainer.innerHTML = 'Hébergement : <strong>15€/mois</strong>';
-                monthlyPriceContainer.classList.add('text-slate-300', 'bg-slate-800/50');
-                monthlyPriceContainer.classList.remove('text-orange-100', 'bg-orange-900/50');
-
-                ctaButton.href = "https://t.me/dailyhash?text=Bonjour%2C%20je%20souhaite%20commander%20une%20Mini%20App%20Basique";
+                // Texte inactif
+                els.sereniteTitle.className = `theme-transition font-bold text-lg ${data.sereniteTextTitle}`;
+                els.sereniteDesc.className = `theme-transition text-sm ${data.sereniteTextDesc}`;
             }
         }
 
-        // --- LOGIQUE THÈME ---
-        const htmlElement = document.documentElement;
-        const themeIcon = document.getElementById('theme-icon');
-        
-        function updateIcon() {
-            if (htmlElement.classList.contains('dark')) {
-                themeIcon.classList.replace('ph-moon-stars', 'ph-sun');
-            } else {
-                themeIcon.classList.replace('ph-sun', 'ph-moon-stars');
-            }
-        }
+        function updatePricingAndLink() {
+            const mode = currentMode;
+            const priceLabel = els.monthlyContainer;
+            
+            let message = "Bonjour, je souhaite commander une Mini App ";
+            message += (mode === 'basic') ? "Basique" : "Premium";
+            
+            if (isSereniteSelected) {
+                // Prix affiché
+                priceLabel.innerHTML = 'Option Sérénité : <strong class="text-orange-500">50€/mois</strong> (Hébergement inclus)';
+                
+                // Style du label prix
+                if(mode === 'basic') {
+                    priceLabel.className = "theme-transition mt-2 text-xs sm:text-sm py-1 px-3 rounded-lg inline-block transition-colors duration-300 bg-orange-100 text-orange-800";
+                } else {
+                    priceLabel.className = "theme-transition mt-2 text-xs sm:text-sm py-1 px-3 rounded-lg inline-block transition-colors duration-300 bg-amber-500/20 text-amber-500 border border-amber-500/20";
+                }
 
-        function checkTimeForTheme() {
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                htmlElement.classList.add('dark');
+                message += " AVEC Option Sérénité";
             } else {
-                htmlElement.classList.remove('dark');
-            }
-            if (!localStorage.theme) {
-                const hour = new Date().getHours();
-                if (hour >= 19 || hour < 7) {
-                    htmlElement.classList.add('dark');
+                priceLabel.innerHTML = 'Hébergement : <strong>15€/mois</strong>';
+                
+                if(mode === 'basic') {
+                    priceLabel.className = "theme-transition mt-2 text-xs sm:text-sm py-1 px-3 rounded-lg inline-block transition-colors duration-300 bg-slate-800/50 text-slate-300";
+                } else {
+                    priceLabel.className = "theme-transition mt-2 text-xs sm:text-sm py-1 px-3 rounded-lg inline-block transition-colors duration-300 bg-slate-100 text-slate-600";
                 }
             }
-            updateIcon();
+
+            const encodedMsg = encodeURIComponent(message);
+            els.ctaBtn.href = `https://t.me/dailyhash?text=${encodedMsg}`;
         }
 
-        function toggleTheme() {
-            if (htmlElement.classList.contains('dark')) {
-                htmlElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                htmlElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-            updateIcon();
-        }
+        // Init
+        setMode('basic');
 
-        checkTimeForTheme();
     </script>
-
 </body>
 </html>
