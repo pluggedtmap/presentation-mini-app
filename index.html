@@ -622,74 +622,81 @@
         </div>
     </div>
 
-    <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+    <!-- HERO SECTION (Mobile Optimized) -->
+    <div class="hero-section w-full max-w-4xl mx-auto text-center pt-4 pb-6 px-4 relative z-10 animate-enter">
+        <span id="offer-tag"
+            class="theme-transition inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-wide w-max mb-3 uppercase border border-transparent transform origin-left hover:scale-105 transition-transform">
+            Nouvelle Tendance
+        </span>
 
-        <!-- 1. BLOC FEATURES & TITRE -->
-        <div
-            class="bento-card spotlight-card theme-transition animate-enter delay-100 col-span-1 lg:col-span-7 order-1 lg:order-2 rounded-3xl p-6 lg:p-10 flex flex-col justify-center h-full relative overflow-hidden">
-            <div class="spotlight-overlay"></div>
-            <div id="blob-top"
-                class="theme-transition blob-anim absolute top-0 right-0 w-40 h-40 bg-blue-50 rounded-full blur-2xl opacity-60">
-            </div>
-
-            <span id="offer-tag"
-                class="theme-transition inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-wide w-max mb-4 uppercase border border-transparent transform origin-left hover:scale-105 transition-transform">
-                Nouvelle Tendance
+        <h1
+            class="tilt-inner text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-4 leading-tight tracking-tight">
+            Mini App Telegram <br>
+            <span id="title-gradient"
+                class="theme-transition text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                E-commerce Simple
             </span>
+        </h1>
 
-            <h1
-                class="tilt-inner text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-8 leading-tight tracking-tight">
-                Mini App Telegram <br>
-                <span id="title-gradient"
-                    class="theme-transition text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                    E-commerce Simple
-                </span>
-            </h1>
-
-            <div id="features-list" class="feature-grid w-full">
-                <!-- Rempli par JS (Mode Grid) -->
-            </div>
-        </div>
-
-        <!-- 2. BLOC TÉLÉPHONE/VIDÉO (Augmenté Row Span) -->
-        <div id="phone-container"
-            class="bento-card theme-transition animate-enter delay-200 col-span-1 lg:col-span-5 lg:row-span-4 order-2 lg:order-1 rounded-3xl p-6 lg:p-8 relative overflow-hidden flex items-center justify-center h-full min-h-[400px] lg:min-h-auto bg-white group">
-            <div id="tech-bg" class="tech-bg"
-                style="background-image: linear-gradient(0deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent);">
-            </div>
-
-            <div id="blob-phone-1"
-                class="theme-transition blob-anim-reverse absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50 -mr-16 -mt-16">
-            </div>
-            <div id="blob-phone-2"
-                class="theme-transition blob-anim absolute bottom-0 left-0 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-50 -ml-16 -mb-16">
-            </div>
-
+        <!-- PHONE/VIDEO CENTERED -->
+        <div id="phone-container" class="relative w-full max-w-[240px] sm:max-w-[280px] mx-auto mt-4 mb-4 group">
             <div class="phone-mockup z-10 relative shadow-2xl">
                 <div class="phone-notch"></div>
                 <div class="phone-screen relative">
-
                     <!-- PLAY BUTTON OVERLAY -->
                     <div id="video-overlay" class="play-overlay" onclick="toggleVideo()">
                         <div class="play-btn">
                             <i class="ph-fill ph-play ml-1"></i>
                         </div>
                     </div>
-
                     <!-- VIDEO PRINCIPALE -->
-                    <!-- Utilisation de rawcdn.githack.com directement dans src -->
-                    <video id="demo-video" class="phone-video" loop playsinline webkit-playsinline
-                        poster="https://via.placeholder.com/280x560/000000/FFFFFF?text=Aperçu"
-                        src="https://rawcdn.githack.com/pluggedtmap/presentation-mini-app-basique/main/video5969790046478276182.mp4">
+                    <video id="demo-video" class="phone-video" playsinline loop muted
+                        poster="https://placehold.co/280x600/1a1a1a/FFF?text=Loading">
+                        <source
+                            src="https://rawcdn.githack.com/pluggedtmap/presentation-mini-app-basique/main/video5969790046478276182.mp4"
+                            type="video/mp4">
                         Votre navigateur ne supporte pas la vidéo.
                     </video>
                 </div>
             </div>
+            <!-- Background Glows for Phone -->
+            <div id="blob-phone-1"
+                class="theme-transition blob-anim-reverse absolute top-10 -right-10 w-48 h-48 bg-blue-100 rounded-full blur-3xl opacity-50 z-0">
+            </div>
+            <div id="blob-phone-2"
+                class="theme-transition blob-anim absolute -bottom-4 -left-10 w-48 h-48 bg-indigo-100 rounded-full blur-3xl opacity-50 z-0">
+            </div>
+        </div>
+    </div>
+
+    <!-- BENTO GRID (Fonctionnalités & Pricing) -->
+    <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+
+        <!-- 1. BLOC FEATURES & TITRE -->
+        <!-- 1. BLOC FEATURES (GRID) -->
+        <div
+            class="bento-card spotlight-card theme-transition animate-enter delay-100 col-span-1 lg:col-span-12 rounded-3xl p-6 lg:p-10 flex flex-col justify-center relative overflow-hidden bg-white/60">
+            <div class="spotlight-overlay"></div>
+            <div id="blob-top"
+                class="theme-transition blob-anim absolute top-0 right-0 w-40 h-40 bg-blue-50 rounded-full blur-2xl opacity-60">
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <i class="ph-duotone ph-star text-blue-500"></i> Tout inclus pour vendre
+            </h3>
+
+            <div id="features-list" class="feature-grid w-full">
+                <!-- Rempli par JS (Mode Grid) -->
+            </div>
         </div>
 
-        <!-- NOUVEAU BLOC : TIMELINE "Comment ça marche" -->
+
+
+
+
+        <!-- 2. BLOC TIMELINE "Comment ça marche" -->
         <div
-            class="bento-card spotlight-card theme-transition animate-enter delay-300 col-span-1 lg:col-span-7 order-2 lg:order-3 rounded-2xl p-6 lg:p-8 bg-white/60">
+            class="bento-card spotlight-card theme-transition animate-enter delay-300 col-span-1 lg:col-span-12 rounded-2xl p-6 lg:p-8 bg-white/60">
             <div class="spotlight-overlay"></div>
             <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <i class="ph-duotone ph-steps text-blue-500"></i> Lancement en 24h
@@ -721,7 +728,7 @@
 
         <!-- 3. BLOC PRIX & CTA (Moved Up) -->
         <div id="price-card"
-            class="bento-card theme-transition animate-enter delay-400 col-span-1 lg:col-span-7 order-3 lg:order-4 rounded-3xl p-6 lg:p-8 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden border-2">
+            class="bento-card theme-transition animate-enter delay-400 col-span-1 lg:col-span-12 rounded-3xl p-6 lg:p-8 flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden border-2">
             <div id="blob-price"
                 class="theme-transition blob-anim absolute right-0 bottom-0 w-64 h-64 rounded-full blur-3xl opacity-20 translate-x-1/2 translate-y-1/2">
             </div>
@@ -731,7 +738,8 @@
                 <div class="flex items-baseline justify-center md:justify-start gap-2 overflow-hidden">
                     <span id="price-value"
                         class="theme-transition text-4xl sm:text-5xl font-extrabold inline-block">350€</span>
-                    <span id="price-suffix" class="font-medium text-sm sm:text-base text-slate-400">/ Mini App</span>
+                    <span id="price-suffix" class="font-medium text-sm sm:text-base text-slate-400">/ Mini
+                        App</span>
                 </div>
 
                 <div class="flex flex-col items-center md:items-start gap-2 mt-2">
@@ -764,7 +772,7 @@
 
             </div>
             <a id="cta-button" href="#" target="_blank" rel="noopener noreferrer"
-                class="shine-effect theme-transition relative z-20 font-bold py-4 px-6 sm:px-8 rounded-xl transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 w-full md:w-auto group touch-manipulation no-underline text-sm sm:text-base whitespace-nowrap border border-white/10 hover:-translate-y-1">
+                class="shine-effect theme-transition relative z-20 font-bold py-4 px-6 sm:px-8 rounded-xl transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-2 w-full md:w-auto group touch-manipulation no-underline text-sm sm:text-base whitespace-nowrap border border-white/10 hover:-translate-y-1 bg-blue-600 text-white hover:bg-blue-500">
                 <span id="cta-icon"></span>
                 <span id="cta-text">Commander</span>
                 <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform shrink-0"></i>
@@ -773,7 +781,7 @@
 
         <!-- 4. BLOC SÉRÉNITÉ (Moved Down) -->
         <div id="serenite-option" onclick="toggleSerenite()"
-            class="bento-card theme-transition animate-enter delay-400 col-span-1 lg:col-span-7 order-4 lg:order-5 relative rounded-2xl p-5 border-2 cursor-pointer flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left group select-none transition-all duration-300 transform active:scale-[0.98]">
+            class="bento-card theme-transition animate-enter delay-400 col-span-1 lg:col-span-12 relative rounded-2xl p-5 border-2 cursor-pointer flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left group select-none transition-all duration-300 transform active:scale-[0.98]">
             <div id="serenite-check"
                 class="check-anim absolute top-3 right-3 sm:top-5 sm:right-5 w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center text-white shadow-sm">
                 <i class="ph-bold ph-check text-sm opacity-0 check-anim"></i>
@@ -791,7 +799,7 @@
 
         <!-- 5. BLOC FAQ -->
         <div
-            class="bento-card theme-transition animate-enter delay-400 col-span-1 lg:col-span-12 order-5 rounded-3xl p-6 lg:p-10 bg-white/60 backdrop-blur-xl">
+            class="bento-card theme-transition animate-enter delay-400 col-span-1 lg:col-span-12 rounded-3xl p-6 lg:p-10 bg-white/60 backdrop-blur-xl">
             <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
                 <i class="ph-duotone ph-question text-blue-500"></i> Questions Fréquentes
             </h3>
@@ -804,7 +812,8 @@
                         <i class="ph-bold ph-caret-down faq-icon text-slate-400"></i>
                     </button>
                     <div class="faq-answer">
-                        Oui bien sûr ! Avec notre panel admin, vous pourrez ajouter et retirer rapidement et simplement
+                        Oui bien sûr ! Avec notre panel admin, vous pourrez ajouter et retirer rapidement et
+                        simplement
                         vos produits disponibles.
                     </div>
                 </div>
@@ -815,7 +824,8 @@
                         <i class="ph-bold ph-caret-down faq-icon text-slate-400"></i>
                     </button>
                     <div class="faq-answer">
-                        NON ! Nous avons décidé de vous laisser ajouter autant de produits que vous voulez, sans aucune
+                        NON ! Nous avons décidé de vous laisser ajouter autant de produits que vous voulez, sans
+                        aucune
                         limite, que ce soit en version Basique ou Premium.
                     </div>
                 </div>
@@ -826,7 +836,8 @@
                         <i class="ph-bold ph-caret-down faq-icon text-slate-400"></i>
                     </button>
                     <div class="faq-answer">
-                        NON. Vous avez la possibilité de payer directement 1 an d'hébergement par défaut, ce qui permet
+                        NON. Vous avez la possibilité de payer directement 1 an d'hébergement par défaut, ce qui
+                        permet
                         de régler la totalité d'un coup pour être tranquille.
                     </div>
                 </div>
@@ -837,7 +848,8 @@
                         <i class="ph-bold ph-caret-down faq-icon text-slate-400"></i>
                     </button>
                     <div class="faq-answer">
-                        Après réception des infos pour le thème, elle sera créée dans les 24h, mais cela peut prendre
+                        Après réception des infos pour le thème, elle sera créée dans les 24h, mais cela peut
+                        prendre
                         jusqu’à 48h selon la demande.
                     </div>
                 </div>
